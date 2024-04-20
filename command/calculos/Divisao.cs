@@ -1,9 +1,9 @@
 class Divisao : Command
 {
-    public void Executar()
+    public void inserirValores()
     {
-        int numA;
-        int numB;
+        double numA;
+        double numB;
         
         bool loopParse = true;
         do {
@@ -15,10 +15,10 @@ class Divisao : Command
         
                 Console.Write("Digite o segundo valor: ");
                 numB = int.Parse(Console.ReadLine());
-                
-                int resultDivisao = numA / numB;
+
+                double resultado = calcular(numA, numB);
         
-                Console.WriteLine($"\n{numA} ÷ {numB} = {resultDivisao}");
+                Console.WriteLine($"\n{numA} ÷ {numB} = {resultado}");
                 
                 loopParse = false;
             } catch (FormatException) {
@@ -32,5 +32,15 @@ class Divisao : Command
         
         Console.WriteLine("\nPressione ENTER para coninuar");
         Console.ReadLine();
+    }
+    
+    public double calcular(double numA, double numB)
+    {
+        Random random = new Random();
+        int timerDuration = random.Next(1, 11);
+        Thread.Sleep(5000); // 5000 milissegundos = 5 segundos
+
+        double resultado = numA - numB;
+        return resultado;
     }
 }

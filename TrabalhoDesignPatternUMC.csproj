@@ -11,4 +11,9 @@
       <PackageReference Include="MySql.Data" Version="8.3.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="service.cs" />
+      <Compile Remove="Service\DAO.cs" />
+    </ItemGroup>
+
 </Project>

@@ -1,4 +1,9 @@
+using System.Runtime.CompilerServices;
+
 interface Command
 {
-    void Executar();
+    int inserirValores();
+
+    double calcular(double numA, double numB);
+    
 }

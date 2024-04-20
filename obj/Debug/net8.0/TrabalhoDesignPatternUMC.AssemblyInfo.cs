@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TrabalhoDesignPatternUMC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0565493c7841263607b89b6035f2faddc5b84eed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b493956db8dc09dd26593df5bc78831cea727282")]
 [assembly: System.Reflection.AssemblyProductAttribute("TrabalhoDesignPatternUMC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TrabalhoDesignPatternUMC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

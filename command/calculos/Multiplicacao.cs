@@ -1,9 +1,9 @@
 class Multiplicacao : Command
 {
-    public void Executar()
+    public int inserirValores()
     {
-        int numA;
-        int numB;
+        double numA;
+        double numB;
         
         bool loopParse = true;
         do {
@@ -15,10 +15,10 @@ class Multiplicacao : Command
         
                 Console.Write("Digite o segundo valor: ");
                 numB = int.Parse(Console.ReadLine());
-                
-                int resultMultiplicacao = numA * numB;
+
+                double resultado = calcular(numA, numB);
         
-                Console.WriteLine($"\n{numA} x {numB} = {resultMultiplicacao}");
+                Console.WriteLine($"\n{numA} x {numB} = {resultado}");
                 
                 loopParse = false;
             } catch (FormatException) {
@@ -32,5 +32,15 @@ class Multiplicacao : Command
         
         Console.WriteLine("\nPressione ENTER para coninuar");
         Console.ReadLine();
+    }
+    
+    public double calcular(double numA, double numB)
+    {
+        Random random = new Random();
+        int timerDuration = random.Next(1, 11);
+        Thread.Sleep(5000); // 5000 milissegundos = 5 segundos
+
+        double resultado = numA * numB;
+        return resultado;
     }
 }

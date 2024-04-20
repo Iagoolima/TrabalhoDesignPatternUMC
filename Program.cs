@@ -1,18 +1,13 @@
-﻿class Program
+﻿using TrabalhoDesignPatternUMC;
+
+class Program
 {
     static void Main(string[] args)
     {
         int opcao = 0;
-
-        Soma soma = new Soma();
-        Subtracao subtracao = new Subtracao();
-        Multiplicacao multiplicacao = new Multiplicacao();
-        Divisao divisao = new Divisao();
         
         do
         {
-            Console.Clear();
-
             Console.WriteLine("╔═══════════════════════════════╗");
             Console.WriteLine("║          Calculadora          ║");
             Console.WriteLine("╠═══════════════════════════════╣");
@@ -29,24 +24,10 @@
             Console.Write("\nOpção: ");
 
             opcao = int.Parse(Console.ReadLine());
-            switch (opcao)
-            {
-                case 1:
-                    soma.Executar();
-                    break;
-                case 2:
-                    subtracao.Executar();
-                    break;
-                case 3:
-                    multiplicacao.Executar();
-                    break;
-                case 4:
-                    divisao.Executar();
-                    break;
-                case 0:
-                    Console.WriteLine("Saindo...");
-                    return;
-            }
+
+            SingletonCircuitBreaker singleton = SingletonCircuitBreaker.GetInstance();
+            singleton.verificacaoCircuitBreaker(opcao);
+            
         } while (opcao != 0);
     }
 }
