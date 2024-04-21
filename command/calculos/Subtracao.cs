@@ -18,7 +18,7 @@ class Subtracao : Command
                 Console.Write("Digite o segundo valor: ");
                 numB = int.Parse(Console.ReadLine());
 
-                Console.Write("Calculando...");Console.Write("Calculando...");
+                Console.Write("Calculando...");
                 double resultado = calcular(numA, numB);
         
                 Console.WriteLine($"\n{numA} - {numB} = {resultado}");

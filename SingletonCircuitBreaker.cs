@@ -34,7 +34,7 @@ public sealed class SingletonCircuitBreaker
                     if (_contexto.Request1())
                     {
                         CircuitBreakerSoma circuitBreakerSoma = new CircuitBreakerSoma();
-                        bool estadoSoma = circuitBreakerSoma.monitorar();
+                        bool estadoSoma = circuitBreakerSoma.monitorarSoma();
                         if (!estadoSoma)
                         {
                             _contexto.TransitionTo(new Aberto());
@@ -42,18 +42,46 @@ public sealed class SingletonCircuitBreaker
                     }
                     metodo = 0;
                     break;
-                // case 2:
-                //     Subtracao subtracao = new Subtracao();
-                //     subtracao.Executar();
-                //     break;
-                // case 3:
-                //     Multiplicacao multiplicacao = new Multiplicacao();
-                //     multiplicacao.Executar();
-                //     break;
-                // case 4:
-                //     Divisao divisao = new Divisao();
-                //     divisao.Executar();
-                //     break;
+                
+                case 2:
+                    if (_contexto.Request1())
+                    {
+                        CircuitBreakerSubtracao circuitBreakerSubtracao = new CircuitBreakerSubtracao();
+                        bool estadoSubtracao = circuitBreakerSubtracao.monitorarSubtracao();
+                        if (!estadoSubtracao)
+                        {
+                            _contexto.TransitionTo(new Aberto());
+                        }
+                    }
+                    metodo = 0;
+                    break;
+                
+                case 3:
+                    if (_contexto.Request1())
+                    {
+                        CircuitBreakerMultiplicacao circuitBreakerMultiplicacao = new CircuitBreakerMultiplicacao();
+                        bool estadoMultiplicacao = circuitBreakerMultiplicacao.monitorarMultiplicacao();
+                        if (!estadoMultiplicacao)
+                        {
+                            _contexto.TransitionTo(new Aberto());
+                        }
+                    }
+                    metodo = 0;
+                    break;
+                
+                case 4:
+                    if (_contexto.Request1())
+                    {
+                        CircuitBreakerDivisao circuitBreakerDivisao = new CircuitBreakerDivisao();
+                        bool estadoDivisao = circuitBreakerDivisao.monitorarDivisao();
+                        if (!estadoDivisao)
+                        {
+                            _contexto.TransitionTo(new Aberto());
+                        }
+                    }
+                    metodo = 0;
+                    break;
+                
                 case 0:
                     Console.WriteLine("Saindo...");
                     return;

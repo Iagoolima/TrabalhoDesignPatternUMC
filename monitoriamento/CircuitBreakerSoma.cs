@@ -7,7 +7,7 @@ namespace TrabalhoDesignPatternUMC.circuitBreakerMetodos;
 
 public partial class CircuitBreakerSoma
 {
-    public bool monitorar()
+    public bool monitorarSoma()
     {
         int tempoLimite = 7;
 
