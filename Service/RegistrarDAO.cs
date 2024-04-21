@@ -12,7 +12,7 @@ public class RegistrarDAO
             {
                 ConexaoDB conexao = new ConexaoDB();
                 string consulta = $"INSERT INTO timeout(tipo_calculo, tempo_requisicao, tempo_limite) " +
-                                  $"VALUES('{registros.getCalculo()}', {registros.getRequisicao()}, {registros.getTempoLimite()})";
+                                $"VALUES('{registros.getCalculo()}', {registros.getRequisicao()}, {registros.getTempoLimite()})";
                 using (MySqlConnection conexaoMySQL = ConexaoDB.CreateDataBaseConnection())
                 {
                     conexaoMySQL.Open(); 

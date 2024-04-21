@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using TrabalhoDesignPatternUMC.circuitBreakerMetodos;
+using TrabalhoDesignPatternUMC.estados.estadosConcretos;
 
 namespace TrabalhoDesignPatternUMC;
 
@@ -20,11 +21,11 @@ public sealed class SingletonCircuitBreaker:EstadosMetodos
 
         return _instance;
     }
-
     
-
+    
     public void verificacaoCircuitBreaker(int metodo)
     {
+        EstadosMetodos estadosMetodos = new EstadosMetodos();
         do{
             switch (metodo)
             {
@@ -32,9 +33,14 @@ public sealed class SingletonCircuitBreaker:EstadosMetodos
                     if (getSoma())
                     {
                         CircuitBreakerSoma circuitBreakerSoma = new CircuitBreakerSoma();
-                        circuitBreakerSoma.monitorar(this);
+                        bool estadoSoma = circuitBreakerSoma.monitorar();
+                        if (!estadoSoma)
+                        {
+                            Estado estado = new Fechado();
+                            this.setSoma(estado);
+                        }
                     }
-                        metodo = 0;
+                    metodo = 0;
                     break;
                 // case 2:
                 //     Subtracao subtracao = new Subtracao();

@@ -1,3 +1,5 @@
+using TrabalhoDesignPatternUMC.estados.estadosConcretos;
+
 namespace TrabalhoDesignPatternUMC;
 
 public class EstadosMetodos
@@ -12,25 +14,23 @@ public class EstadosMetodos
     private int tempoManutencaoMultiplicacao;
     private int tempoManutencaoDivisao;
         
-    public void setSoma(bool soma)
+    public void setSoma(Estado estado)
     {
-        this.soma = soma;
-        
-        if (!soma)
+        if (estado is Fechado)
         {
             tempoManutencaoSoma = 1 * 30;
             Timer timer = new Timer(TimerCallback, null, 0, 1000);
         }
     }
 
-    public bool getSoma()
+    public Estado getSoma(Estado estado)
     {
-        if (!soma)
+        if (estado is Fechado)
         {
             Console.WriteLine("ERRO 500: Por favor, volte mais tarde \n");
             Console.WriteLine("Servidor em manutencao, por favor aguarde " + tempoManutencaoSoma + " segundos");
         }
-        return soma;
+        return estado;
     }
     
     public void setSubtracao(bool subtracao)
@@ -98,7 +98,11 @@ public class EstadosMetodos
         tempoManutencaoSoma--;
         if (tempoManutencaoSoma <= 0)
         {
-            this.soma = true;
+            if (this.soma) 
+            {
+                Estado estadoAberto = new Aberto();
+                this.setSoma(estadoAberto);
+            }
         }
         
         tempoManutencaoSubtracao--;
