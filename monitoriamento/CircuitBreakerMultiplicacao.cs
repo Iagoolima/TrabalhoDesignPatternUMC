@@ -22,7 +22,6 @@ public class CircuitBreakerMultiplicacao
         Multiplicacao multiiplicacao = new Multiplicacao();
         int tempoExecutado = multiiplicacao.inserirValores();
         long tempoDecorrido = stopwatch.ElapsedMilliseconds / 1000;
-        Console.WriteLine(tempoDecorrido);
         stopwatch.Stop();
         
         if (tempoDecorrido > tempoLimite)

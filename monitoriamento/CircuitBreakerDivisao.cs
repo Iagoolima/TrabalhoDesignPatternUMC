@@ -22,7 +22,6 @@ public class CircuitBreakerDivisao
         Divisao divisao = new Divisao();
         int tempoExecutado = divisao.inserirValores();
         long tempoDecorrido = stopwatch.ElapsedMilliseconds / 1000;
-        Console.WriteLine(tempoDecorrido);
         stopwatch.Stop();
         
         if (tempoDecorrido > tempoLimite)

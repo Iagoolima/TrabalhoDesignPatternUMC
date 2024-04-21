@@ -12,6 +12,4 @@ public class Fechado : Estado
     {
         this._context.TransitionTo(new Aberto());
     }
-
-   
 }

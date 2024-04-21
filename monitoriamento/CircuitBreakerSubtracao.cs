@@ -22,7 +22,6 @@ public class CircuitBreakerSubtracao
         Subtracao subtracao = new Subtracao();
         int tempoExecutado = subtracao.inserirValores();
         long tempoDecorrido = stopwatch.ElapsedMilliseconds / 1000;
-        Console.WriteLine(tempoDecorrido);
         stopwatch.Stop();
         
         if (tempoDecorrido > tempoLimite)

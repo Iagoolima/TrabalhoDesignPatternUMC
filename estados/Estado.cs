@@ -10,5 +10,5 @@ public abstract class Estado
 
     public abstract Boolean Handle1();
     
-    public virtual void ExibirTimer() {} 
+    public virtual void ExibirTimer() {}
 }

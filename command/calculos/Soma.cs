@@ -14,6 +14,19 @@ class Soma : Command
             try {
                 Console.Clear();
                 
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine(@"  ______   ______  __       __  ______  
+ /      \ /      \|  \     /  \/      \ 
+|  ▓▓▓▓▓▓\  ▓▓▓▓▓▓\ ▓▓\   /  ▓▓  ▓▓▓▓▓▓\
+| ▓▓___\▓▓ ▓▓  | ▓▓ ▓▓▓\ /  ▓▓▓ ▓▓__| ▓▓
+ \▓▓    \| ▓▓  | ▓▓ ▓▓▓▓\  ▓▓▓▓ ▓▓    ▓▓
+ _\▓▓▓▓▓▓\ ▓▓  | ▓▓ ▓▓\▓▓ ▓▓ ▓▓ ▓▓▓▓▓▓▓▓
+|  \__| ▓▓ ▓▓__/ ▓▓ ▓▓ \▓▓▓| ▓▓ ▓▓  | ▓▓
+ \▓▓    ▓▓\▓▓    ▓▓ ▓▓  \▓ | ▓▓ ▓▓  | ▓▓
+  \▓▓▓▓▓▓  \▓▓▓▓▓▓ \▓▓      \▓▓\▓▓   \▓▓
+");
+                Console.ResetColor();
+                
                 Console.Write("Digite o primeiro valor: ");
                 numA = double.Parse(Console.ReadLine());
         

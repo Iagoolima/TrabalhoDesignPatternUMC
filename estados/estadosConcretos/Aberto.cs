@@ -34,6 +34,7 @@ namespace TrabalhoDesignPatternUMC.estados.estadosConcretos
         
         public override void ExibirTimer()
         {
+            Console.Clear();
             Console.WriteLine($"Servidor em manutencao: Tente novamente após {_tempoRestante} segundos.");
         }
     }
