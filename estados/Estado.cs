@@ -8,5 +8,5 @@ public abstract class Estado
         this._context = context;
     }
 
-    public abstract void Handle1();
+    public abstract Boolean Handle1();
 }

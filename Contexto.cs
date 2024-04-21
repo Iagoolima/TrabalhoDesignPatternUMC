@@ -16,8 +16,8 @@ public class Contexto
         this._state.SetContext(this);
     }
     
-    public void Request1()
+    public bool Request1()
     {
-        this._state.Handle1();
+        return this._state.Handle1();
     }
 }

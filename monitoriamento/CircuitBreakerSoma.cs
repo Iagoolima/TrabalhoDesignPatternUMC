@@ -5,9 +5,8 @@ using TrabalhoDesignPatternUMC.Service;
 
 namespace TrabalhoDesignPatternUMC.circuitBreakerMetodos;
 
-public partial class CircuitBreakerSoma : EstadosMetodos
+public partial class CircuitBreakerSoma
 {
-    Estado estadoFechado = new Fechado();   
     public bool monitorar()
     {
         int tempoLimite = 7;

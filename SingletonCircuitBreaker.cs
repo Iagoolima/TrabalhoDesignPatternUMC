@@ -1,11 +1,13 @@
 using System.Diagnostics;
 using TrabalhoDesignPatternUMC.circuitBreakerMetodos;
+using TrabalhoDesignPatternUMC.estados;
 using TrabalhoDesignPatternUMC.estados.estadosConcretos;
 
 namespace TrabalhoDesignPatternUMC;
 
-public sealed class SingletonCircuitBreaker:EstadosMetodos
+public sealed class SingletonCircuitBreaker
 {
+    private Contexto _contexto = new Contexto(new Fechado());
     private SingletonCircuitBreaker()
     {
     }
@@ -25,19 +27,17 @@ public sealed class SingletonCircuitBreaker:EstadosMetodos
     
     public void verificacaoCircuitBreaker(int metodo)
     {
-        EstadosMetodos estadosMetodos = new EstadosMetodos();
         do{
             switch (metodo)
             {
                 case 1:
-                    if (getSoma())
+                    if (_contexto.Request1())
                     {
                         CircuitBreakerSoma circuitBreakerSoma = new CircuitBreakerSoma();
                         bool estadoSoma = circuitBreakerSoma.monitorar();
                         if (!estadoSoma)
                         {
-                            Estado estado = new Fechado();
-                            this.setSoma(estado);
+                            _contexto.TransitionTo(new Aberto());
                         }
                     }
                     metodo = 0;
