@@ -11,7 +11,6 @@ public class Contexto
 
     public void TransitionTo(Estado state)
     {
-        Console.WriteLine($"\nContexto: Transicionando para {state.GetType().Name}.");
         this._state = state;
         this._state.SetContext(this);
     }
@@ -19,5 +18,11 @@ public class Contexto
     public bool Request1()
     {
         return this._state.Handle1();
+    }
+    
+    public Estado GetEstadoAtual()
+    {
+        _state.ExibirTimer();
+        return this._state;
     }
 }

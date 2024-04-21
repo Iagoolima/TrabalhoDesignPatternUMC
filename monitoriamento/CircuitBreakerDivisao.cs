@@ -1,13 +1,20 @@
 using System.Diagnostics;
 using TrabalhoDesignPatternUMC.domain;
+using TrabalhoDesignPatternUMC.estados;
 using TrabalhoDesignPatternUMC.estados.estadosConcretos;
 using TrabalhoDesignPatternUMC.Service;
 
 namespace TrabalhoDesignPatternUMC.circuitBreakerMetodos;
 
-public partial class CircuitBreakerDivisao
+public class CircuitBreakerDivisao
 {
-    public bool monitorarDivisao()
+    private readonly Contexto _contexto;
+
+    public CircuitBreakerDivisao(Contexto contexto)
+    {
+        _contexto = contexto;
+    }
+    public void monitorarDivisao()
     {
         int tempoLimite = 7;
 
@@ -20,6 +27,8 @@ public partial class CircuitBreakerDivisao
         
         if (tempoDecorrido > tempoLimite)
         {
+            Console.WriteLine("aguarde ... ");
+            
             Registros registro = new Registros();
             registro.setCalculo("divisao");
             registro.setRequisicao(tempoExecutado);
@@ -28,9 +37,11 @@ public partial class CircuitBreakerDivisao
             RegistrarDAO DAO = new RegistrarDAO();
             DAO.InserirRegistroDAO(registro);
 
-            return false;
+            Estado estadoAtual = _contexto.GetEstadoAtual();
+            if (estadoAtual is Fechado fechado)
+            {
+                fechado.MudarParaAberto();
+            }
         }
-
-        return true;
     }
 }

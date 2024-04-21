@@ -28,62 +28,55 @@ public sealed class SingletonCircuitBreaker
     public void verificacaoCircuitBreaker(int metodo)
     {
         do{
+            
+            
             switch (metodo)
             {
+
                 case 1:
-                    if (_contexto.Request1())
+                    if (_contexto.GetEstadoAtual() as Fechado != null)
                     {
-                        CircuitBreakerSoma circuitBreakerSoma = new CircuitBreakerSoma();
-                        bool estadoSoma = circuitBreakerSoma.monitorarSoma();
-                        if (!estadoSoma)
-                        {
-                            _contexto.TransitionTo(new Aberto());
-                        }
+                        CircuitBreakerSoma circuitBreakerSoma = new CircuitBreakerSoma(_contexto);
+                        circuitBreakerSoma.monitorarSoma();
                     }
                     metodo = 0;
                     break;
                 
                 case 2:
-                    if (_contexto.Request1())
+                    if (_contexto.GetEstadoAtual() as Fechado != null)
                     {
-                        CircuitBreakerSubtracao circuitBreakerSubtracao = new CircuitBreakerSubtracao();
-                        bool estadoSubtracao = circuitBreakerSubtracao.monitorarSubtracao();
-                        if (!estadoSubtracao)
-                        {
-                            _contexto.TransitionTo(new Aberto());
-                        }
+                        CircuitBreakerSubtracao circuitBreakerSubtracao = new CircuitBreakerSubtracao(_contexto);
+                        circuitBreakerSubtracao.monitorarSubtracao();
                     }
                     metodo = 0;
                     break;
                 
                 case 3:
-                    if (_contexto.Request1())
+                    if (_contexto.GetEstadoAtual() as Fechado != null)
                     {
-                        CircuitBreakerMultiplicacao circuitBreakerMultiplicacao = new CircuitBreakerMultiplicacao();
-                        bool estadoMultiplicacao = circuitBreakerMultiplicacao.monitorarMultiplicacao();
-                        if (!estadoMultiplicacao)
-                        {
-                            _contexto.TransitionTo(new Aberto());
-                        }
+                        CircuitBreakerMultiplicacao circuitBreakerMultiplicacao = new CircuitBreakerMultiplicacao(_contexto);
+                        circuitBreakerMultiplicacao.monitorarMultiplicacao();
+                        
                     }
+                    
                     metodo = 0;
                     break;
                 
                 case 4:
-                    if (_contexto.Request1())
+                    if (_contexto.GetEstadoAtual() as Fechado != null)
                     {
-                        CircuitBreakerDivisao circuitBreakerDivisao = new CircuitBreakerDivisao();
-                        bool estadoDivisao = circuitBreakerDivisao.monitorarDivisao();
-                        if (!estadoDivisao)
-                        {
-                            _contexto.TransitionTo(new Aberto());
-                        }
+                        CircuitBreakerDivisao circuitBreakerDivisao = new CircuitBreakerDivisao(_contexto);
+                        circuitBreakerDivisao.monitorarDivisao();
                     }
                     metodo = 0;
                     break;
                 
                 case 0:
                     Console.WriteLine("Saindo...");
+                    return;
+                
+                default:
+                    Console.WriteLine("Numero invalido");
                     return;
             }
         } while (metodo != 0);

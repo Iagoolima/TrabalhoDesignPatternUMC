@@ -1,13 +1,20 @@
 using System.Diagnostics;
 using TrabalhoDesignPatternUMC.domain;
+using TrabalhoDesignPatternUMC.estados;
 using TrabalhoDesignPatternUMC.estados.estadosConcretos;
 using TrabalhoDesignPatternUMC.Service;
 
 namespace TrabalhoDesignPatternUMC.circuitBreakerMetodos;
 
-public partial class CircuitBreakerSubtracao
+public class CircuitBreakerSubtracao
 {
-    public bool monitorarSubtracao()
+    private readonly Contexto _contexto;
+
+    public CircuitBreakerSubtracao(Contexto contexto)
+    {
+        _contexto = contexto;
+    }
+    public void monitorarSubtracao()
     {
         int tempoLimite = 7;
 
@@ -20,6 +27,8 @@ public partial class CircuitBreakerSubtracao
         
         if (tempoDecorrido > tempoLimite)
         {
+            Console.WriteLine("aguarde ... ");
+            
             Registros registro = new Registros();
             registro.setCalculo("subtracao");
             registro.setRequisicao(tempoExecutado);
@@ -28,9 +37,11 @@ public partial class CircuitBreakerSubtracao
             RegistrarDAO DAO = new RegistrarDAO();
             DAO.InserirRegistroDAO(registro);
 
-            return false;
+            Estado estadoAtual = _contexto.GetEstadoAtual();
+            if (estadoAtual is Fechado fechado)
+            {
+                fechado.MudarParaAberto();
+            }
         }
-
-        return true;
     }
 }
