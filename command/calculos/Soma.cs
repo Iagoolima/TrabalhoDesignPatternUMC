@@ -19,10 +19,11 @@ class Soma : Command
         
                 Console.Write("Digite o segundo valor: ");
                 numB = double.Parse(Console.ReadLine());
-
+                
+                Console.Write("Calculando...");
                 double resultado = calcular(numA, numB);
                 
-                Console.WriteLine($"\n{numA} + {numB} = {resultado}");
+                Console.WriteLine($"\n resultado {numA} + {numB} = {resultado}");
                 
                 loopParse = false;
 
@@ -42,9 +43,8 @@ class Soma : Command
     public double calcular(double numA, double numB)
     {
         Random random = new Random();
-        tempoRequisicao = random.Next(1, 11);
-        Thread.Sleep(6000); // 5000 milissegundos = 5 segundos
-
+        tempoRequisicao = random.Next(5000, 10000);
+        Thread.Sleep(tempoRequisicao); 
         double resultado = numA + numB;
         return resultado;
     }

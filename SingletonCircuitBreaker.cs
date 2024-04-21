@@ -33,13 +33,8 @@ public sealed class SingletonCircuitBreaker:EstadosMetodos
                     {
                         CircuitBreakerSoma circuitBreakerSoma = new CircuitBreakerSoma();
                         circuitBreakerSoma.monitorar(this);
-                        metodo = 0;
                     }
-                    else
-                    {
-                        Console.WriteLine("ERRO 500: Por favor, volte mais tarde \n\n");
                         metodo = 0;
-                    }
                     break;
                 // case 2:
                 //     Subtracao subtracao = new Subtracao();

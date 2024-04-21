@@ -1,6 +1,9 @@
 class Divisao : Command
 {
-    public void inserirValores()
+    
+    private int tempoRequisicao;
+
+    public int inserirValores()
     {
         double numA;
         double numB;
@@ -29,17 +32,16 @@ class Divisao : Command
                 Console.ReadLine();
             }
         } while (loopParse);
-        
         Console.WriteLine("\nPressione ENTER para coninuar");
         Console.ReadLine();
+        return tempoRequisicao;
     }
     
     public double calcular(double numA, double numB)
     {
         Random random = new Random();
-        int timerDuration = random.Next(1, 11);
-        Thread.Sleep(5000); // 5000 milissegundos = 5 segundos
-
+        tempoRequisicao = random.Next(5000, 10000);
+        Thread.Sleep(tempoRequisicao); 
         double resultado = numA - numB;
         return resultado;
     }

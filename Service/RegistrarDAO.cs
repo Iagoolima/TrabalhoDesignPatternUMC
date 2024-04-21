@@ -11,7 +11,7 @@ public class RegistrarDAO
             try
             {
                 ConexaoDB conexao = new ConexaoDB();
-                string consulta = $"INSERT INTO tabela(calculo, requisicao, tempo_limite) " +
+                string consulta = $"INSERT INTO timeout(tipo_calculo, tempo_requisicao, tempo_limite) " +
                                   $"VALUES('{registros.getCalculo()}', {registros.getRequisicao()}, {registros.getTempoLimite()})";
                 using (MySqlConnection conexaoMySQL = ConexaoDB.CreateDataBaseConnection())
                 {
